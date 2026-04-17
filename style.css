@@ -1,0 +1,105 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Soft warm cream background */
+    background-color: #FFF0BE; 
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+h1 {
+    color: #FF9A86;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+#formDiv {
+    background: white;
+    width: 450px; 
+    padding: 40px;  
+    border-radius: 30px;
+    /* Soft shadow using the palette colors */
+    box-shadow: 0 20px 40px rgba(255, 154, 134, 0.2);
+    border: 2px solid #FFD6A6;
+}
+
+h3 {
+    color: #FFB399;
+    margin: 20px 0 10px 0;
+    border-bottom: 2px solid #FFF0BE;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+label {
+    color: #888; 
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Unified styling for all entry fields */
+input, select, textarea {
+    width: 100%; /* Ensures they fill the container */
+    padding: 12px 15px;
+    margin-bottom: 25px; /* Space between input and the next label */
+    border: 2px solid #FFF0BE;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #555;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Focus effect using the palette */
+input:focus, select:focus, textarea:focus {
+    border-color: #FFB399;
+    background-color: #FFFAF0;
+    box-shadow: 0 0 8px rgba(255, 179, 153, 0.3);
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    /* Gradient using the main palette colors */
+    background: linear-gradient(135deg, #FF9A86 0%, #FFB399 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 154, 134, 0.4);
+    filter: brightness(1.05);
+}
+
+/* Cleaning up the <br> tags from your HTML via CSS */
+br {
+    display: none;
+}
