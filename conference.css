@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
+
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --navy: #0d2340;
+  --navy-mid: #1a3a60;
+  --blue-accent: #1565d8;
+  --steel: #4a6080;
+  --text-dark: #0d2340;
+  --text-mid: #4a6080;
+  --text-light: #8898aa;
+  --border: rgba(13,35,64,0.1);
+  --line: rgba(21,101,216,0.6);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, rgba(13,35,64,0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(13,35,64,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px 60px;
+  font-family: 'Syne', sans-serif;
+}
+
+.card-header {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.05),
+    0 20px 60px rgba(13,35,64,0.2),
+    0 4px 20px rgba(13,35,64,0.15);
+}
+
+/* Left accent bar */
+.card-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 5px;
+  background: var(--blue-accent);
+}
+
+/* Geometric grid overlay */
+.card-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.header-icon {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-icon img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(0.6) brightness(0.5) contrast(1.1);
+  mix-blend-mode: luminosity;
+}
+
+.header-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,35,64,0.3) 0%, rgba(13,35,64,0.85) 100%);
+}
+
+.card-body {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  border-left: 5px solid var(--blue-accent);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 52px 28px;
+  position: relative;
+  animation: slideIn 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* Category tag */
+.card-body::before {
+  content: 'OFFICIAL INVITATION';
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--blue-accent);
+  background: rgba(21,101,216,0.07);
+  padding: 5px 12px;
+  border: 1px solid rgba(21,101,216,0.2);
+  margin-bottom: 20px;
+}
+
+.invitation-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.invitation-subtitle {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+.card-details {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  border-left: 5px solid var(--blue-accent);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0 52px 48px;
+  animation: slideIn 0.7s cubic-bezier(0.4,0,0.2,1) 0.1s both;
+}
+
+.card-details::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 28px;
+}
+
+/* Bottom rule */
+.card-details::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-accent), var(--navy));
+  margin-top: 36px;
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(13,35,64,0.06);
+}
+
+.detail-item:last-child { border-bottom: none; }
+
+.detail-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding-top: 2px;
+}
+
+.detail-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 600px) {
+  .card-body, .card-details { padding-left: 24px; padding-right: 24px; }
+  .detail-item { grid-template-columns: 1fr; gap: 2px; }
+}

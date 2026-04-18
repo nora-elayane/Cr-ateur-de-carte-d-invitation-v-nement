@@ -1,105 +1,256 @@
-* {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:           #faf6f0;
+  --surface:      #ffffff;
+  --amber:        #c47840;
+  --amber-light:  #e8b87a;
+  --amber-soft:   rgba(196,120,64,0.14);
+  --amber-border: rgba(196,120,64,0.25);
+  --terracotta:   #d4865a;
+  --text-dark:    #2c1f14;
+  --text-mid:     #7a5c40;
+  --text-soft:    #a08060;
+  --text-faint:   #c8b8a0;
+  --border:       #ecdec8;
+  --radius-card:  14px;
+  --radius-btn:   10px;
 }
 
+/* ─── RESET ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+br { display: none; }
+
+/* ─── BODY ───────────────────────────────────────────── */
 body {
-    /* Soft warm cream background */
-    background-color: #FFF0BE; 
-    min-height: 100vh;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 65% 45% at 50% 0%,   rgba(232,184,122,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 5%  90%,   rgba(196,120,64,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 30% at 95% 80%,   rgba(212,134,90,0.08) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 56px 20px 80px;
+  font-family: 'DM Sans', sans-serif;
 }
 
+/* ─── PAGE HEADING ───────────────────────────────────── */
 h1 {
-    color: #FF9A86;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text-dark);
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  animation: fadeDown 0.8s cubic-bezier(0.16,1,0.3,1) both;
 }
 
+h1::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  margin: 12px auto 0;
+}
+
+body > p {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  animation: fadeDown 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both;
+}
+
+/* ─── FORM CARD ───────────────────────────────────────── */
 #formDiv {
-    background: white;
-    width: 450px; 
-    padding: 40px;  
-    border-radius: 30px;
-    /* Soft shadow using the palette colors */
-    box-shadow: 0 20px 40px rgba(255, 154, 134, 0.2);
-    border: 2px solid #FFD6A6;
+  width: 100%;
+  max-width: 500px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 0;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(180,120,60,0.06),
+    0 8px 24px rgba(180,120,60,0.10),
+    0 32px 64px rgba(140,80,30,0.10);
+  animation: riseIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+  margin-top: 8px;
 }
 
+#formDiv::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--amber-light), var(--terracotta), var(--amber), var(--amber-light));
+}
+
+/* ─── SECTION HEADINGS (h3) ──────────────────────────── */
 h3 {
-    color: #FFB399;
-    margin: 20px 0 10px 0;
-    border-bottom: 2px solid #FFF0BE;
-    display: inline-block;
-    padding-bottom: 5px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 40px 12px;
+  margin: 0;
+  border-top: 1px solid rgba(236,222,200,0.7);
 }
 
+h3:first-of-type {
+  border-top: none;
+  padding-top: 26px;
+}
+
+h3::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── LABELS ─────────────────────────────────────────── */
 label {
-    color: #888; 
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+  padding: 0 40px;
+  transition: color 0.25s;
 }
 
-/* Unified styling for all entry fields */
-input, select, textarea {
-    width: 100%; /* Ensures they fill the container */
-    padding: 12px 15px;
-    margin-bottom: 25px; /* Space between input and the next label */
-    border: 2px solid #FFF0BE;
-    border-radius: 12px;
-    background-color: #fff;
-    color: #555;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s ease;
+/* ─── INPUTS / SELECT / TEXTAREA ─────────────────────── */
+input,
+select,
+textarea {
+  display: block;
+  width: calc(100% - 80px);
+  margin: 0 40px 22px;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--border);
+  border-radius: 0;
+  color: var(--text-dark);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-bottom-color: var(--amber);
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c47840' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 22px;
+  cursor: pointer;
+  color: var(--text-mid);
+}
+
+select option {
+  background: #ffffff;
+  color: var(--text-dark);
 }
 
 textarea {
-    resize: none;
-    height: 80px;
+  resize: none;
+  height: 90px;
+  line-height: 1.7;
 }
 
-/* Focus effect using the palette */
-input:focus, select:focus, textarea:focus {
-    border-color: #FFB399;
-    background-color: #FFFAF0;
-    box-shadow: 0 0 8px rgba(255, 179, 153, 0.3);
-}
-
+/* ─── BUTTON ─────────────────────────────────────────── */
 button {
-    width: 100%;
-    margin-top: 20px;
-    height: 55px;
-    border-radius: 15px;
-    border: none;
-    /* Gradient using the main palette colors */
-    background: linear-gradient(135deg, #FF9A86 0%, #FFB399 100%);
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  width: calc(100% - 80px);
+  margin: 10px 40px 40px;
+  height: 54px;
+  border: none;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg, #f0c070 0%, #d47848 50%, #c46838 100%);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(180,100,40,0.20),
+    0 8px 20px rgba(180,100,40,0.18);
+  transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 154, 134, 0.4);
-    filter: brightness(1.05);
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 10px rgba(180,100,40,0.25),
+    0 14px 28px rgba(180,100,40,0.22);
 }
 
-/* Cleaning up the <br> tags from your HTML via CSS */
-br {
-    display: none;
+button:active {
+  transform: translateY(0px) scale(0.99);
+  box-shadow:
+    0 1px 4px rgba(180,100,40,0.20),
+    0 4px 12px rgba(180,100,40,0.15);
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 520px) {
+  h3               { padding-left: 22px; padding-right: 22px; }
+  label            { padding-left: 22px; padding-right: 22px; }
+  input,
+  select,
+  textarea,
+  button           { width: calc(100% - 44px); margin-left: 22px; margin-right: 22px; }
 }

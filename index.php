@@ -9,6 +9,7 @@
 <body>
     <h1>Create your EVENT invitation</h1>
     <div id="formDiv">
+      <!-- <h3>Event Details</h3> -->
     <form action="invitation.php" method="post">
       <h3>Event Details </h3> <br>
       <label for="title">Event Title</label><br> 
@@ -26,6 +27,7 @@
         <option value="conference">Conference</option>
         <option value="gala">Gala</option>
       </select><br>
+      <h3>About the Event</h3>
       <label for="description">Event Description</label> <br>
       <textarea name="description" id="description" cols="20"></textarea>
       <h3>Invitation Content </h3> <br>

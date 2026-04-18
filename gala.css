@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Barlow+Condensed:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #080808;
+  --surface: #0c0c0c;
+  --gold: #c9a84c;
+  --gold-bright: #f0cc7a;
+  --gold-dim: rgba(201,168,76,0.4);
+  --gold-faint: rgba(201,168,76,0.08);
+  --text-bright: #f5eed8;
+  --text-soft: #8c7d5e;
+  --border: rgba(201,168,76,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201,168,76,0.07) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='0.025'%3E%3Crect x='38' y='0' width='4' height='80'/%3E%3Crect x='0' y='38' width='80' height='4'/%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px 60px;
+  font-family: 'Barlow Condensed', sans-serif;
+  position: relative;
+}
+
+/* Vignette overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+
+.card-header {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 0 60px rgba(201,168,76,0.06),
+    0 40px 100px rgba(0,0,0,0.8);
+}
+
+/* Gold top rule */
+.card-header::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, transparent 95%);
+  box-shadow: 0 0 12px rgba(201,168,76,0.3);
+}
+
+/* Gold inner line */
+.card-header::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 48px;
+}
+
+.header-icon {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(12,12,12,0.2) 0%, rgba(12,12,12,0.8) 90%),
+    linear-gradient(to right, rgba(201,168,76,0.06) 0%, transparent 30%, transparent 70%, rgba(201,168,76,0.06) 100%);
+  pointer-events: none;
+}
+
+.header-icon img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: saturate(0.5) brightness(0.6);
+}
+
+.card-body {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  padding: 44px 60px 32px;
+  text-align: center;
+  position: relative;
+}
+
+/* Ornate divider */
+.card-body::before {
+  content: '◈  ◆  ◈';
+  display: block;
+  font-size: 11px;
+  letter-spacing: 14px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0.6;
+}
+
+.card-body::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 48px; right: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.invitation-title {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  font-weight: 400;
+  color: var(--text-bright);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+  animation: reveaLux 1.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.invitation-subtitle {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  max-width: 400px;
+  margin: 0 auto;
+  animation: reveaLux 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+}
+
+.card-details {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 32px 60px 52px;
+  animation: reveaLux 1.4s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+  position: relative;
+}
+
+/* Gold separator */
+.card-details::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: 32px;
+  box-shadow: 0 0 6px rgba(201,168,76,0.15);
+}
+
+/* Bottom rule */
+.card-details::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, transparent 95%);
+  box-shadow: 0 0 12px rgba(201,168,76,0.25);
+}
+
+.detail-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  position: relative;
+}
+
+.detail-item:last-child { border-bottom: none; }
+
+/* Gold dot accent */
+.detail-item::before {
+  content: '◆';
+  color: var(--gold);
+  font-size: 8px;
+  margin-right: 14px;
+  opacity: 0.5;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.detail-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1rem;
+  color: var(--text-bright);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+@keyframes reveaLux {
+  from { opacity: 0; transform: translateY(20px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@media (max-width: 600px) {
+  .card-body, .card-details { padding-left: 28px; padding-right: 28px; }
+  .detail-label { min-width: 90px; }
+}
