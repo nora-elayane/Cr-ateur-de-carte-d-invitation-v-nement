@@ -13,13 +13,13 @@
     <form action="invitation.php" method="post">
       <h3>Event Details </h3> <br>
       <label for="title">Event Title</label><br> 
-      <input type="text" name="title" id="title" placeholder="Annual Gala Dinner"><br>
+      <input type="text" required name="title" id="title" placeholder="Annual Gala Dinner"><br>
       <label for="date">Date</label><br>
-      <input type="date" name="date" id="date"> <br>
+      <input type="date" required name="date" id="date"> <br>
       <label for="time">Time</label><br>
-      <input type="time" name="time" id="time"><br>
+      <input type="time" required name="time" id="time"><br>
       <label for="type">Event Type</label><br>
-      <select name="type" id="type">
+      <select name="type" required id="type">
         <option value="wedding">Wedding</option>
         <option value="anniversary">Anniversary</option>
         <option value="baby shower">Baby shower</option>
@@ -29,14 +29,14 @@
       </select><br>
       <h3>About the Event</h3>
       <label for="description">Event Description</label> <br>
-      <textarea name="description" id="description" cols="20"></textarea>
+      <textarea name="description" required id="description" cols="20"></textarea>
       <h3>Invitation Content </h3> <br>
       <label for="host">Host Name(s)</label><br>
-      <input type="text" name="host" id="host"><br>
+      <input type="text" required name="host" id="host"><br>
       <label for="location">Location</label><br>
-      <input type="text" name="location" id="location"><br>
+      <input type="text" required name="location" id="location"><br>
       <label for="message">Message</label><br>
-      <textarea name="message" id="message"></textarea><br>
+      <textarea required name="message" id="message"></textarea><br>
       <button type="submit">Create</button>
     </form>
 </div>
